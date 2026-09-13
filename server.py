@@ -12,8 +12,8 @@ def sent_detector():
     """
     Analyzes text emotions and returns formatted response or error message.
     """
-    text_to_analyze = request.args.get("textToAnalyze")
-    response = emotion_detector(text_to_analyze)
+    text_to_analyse = request.args.get("textToAnalyze")
+    response = emotion_detector(text_to_analyse)
 
     if response["dominant_emotion"] is None:
         return "Invalid text! Please try again!"
