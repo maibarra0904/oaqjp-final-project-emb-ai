@@ -7,17 +7,53 @@ function setSampleText(text) {
 function getEmotionColor(emotion) {
     switch (emotion.toLowerCase()) {
         case 'joy':
-            return { bg: 'rgba(16, 185, 129, 0.18)', border: '#10b981', text: '#34d399', fill: 'linear-gradient(90deg, #059669, #10b981)', icon: '🌟' };
+            return {
+                bg: 'rgba(16, 185, 129, 0.18)',
+                border: '#10b981',
+                text: '#34d399',
+                fill: 'linear-gradient(90deg, #059669, #10b981)',
+                icon: '🌟'
+            };
         case 'anger':
-            return { bg: 'rgba(239, 68, 68, 0.18)', border: '#ef4444', text: '#f87171', fill: 'linear-gradient(90deg, #dc2626, #ef4444)', icon: '😡' };
+            return {
+                bg: 'rgba(239, 68, 68, 0.18)',
+                border: '#ef4444',
+                text: '#f87171',
+                fill: 'linear-gradient(90deg, #dc2626, #ef4444)',
+                icon: '😡'
+            };
         case 'disgust':
-            return { bg: 'rgba(168, 85, 247, 0.18)', border: '#a855f7', text: '#c084fc', fill: 'linear-gradient(90deg, #7c3aed, #a855f7)', icon: '🤢' };
+            return {
+                bg: 'rgba(168, 85, 247, 0.18)',
+                border: '#a855f7',
+                text: '#c084fc',
+                fill: 'linear-gradient(90deg, #7c3aed, #a855f7)',
+                icon: '🤢'
+            };
         case 'fear':
-            return { bg: 'rgba(245, 158, 11, 0.18)', border: '#f59e0b', text: '#fbbf24', fill: 'linear-gradient(90deg, #d97706, #f59e0b)', icon: '😨' };
+            return {
+                bg: 'rgba(245, 158, 11, 0.18)',
+                border: '#f59e0b',
+                text: '#fbbf24',
+                fill: 'linear-gradient(90deg, #d97706, #f59e0b)',
+                icon: '😨'
+            };
         case 'sadness':
-            return { bg: 'rgba(59, 130, 246, 0.18)', border: '#3b82f6', text: '#60a5fa', fill: 'linear-gradient(90deg, #2563eb, #3b82f6)', icon: '😢' };
+            return {
+                bg: 'rgba(59, 130, 246, 0.18)',
+                border: '#3b82f6',
+                text: '#60a5fa',
+                fill: 'linear-gradient(90deg, #2563eb, #3b82f6)',
+                icon: '😢'
+            };
         default:
-            return { bg: 'rgba(99, 102, 241, 0.18)', border: '#6366f1', text: '#818cf8', fill: 'linear-gradient(90deg, #4f46e5, #6366f1)', icon: '✨' };
+            return {
+                bg: 'rgba(99, 102, 241, 0.18)',
+                border: '#6366f1',
+                text: '#818cf8',
+                fill: 'linear-gradient(90deg, #4f46e5, #6366f1)',
+                icon: '✨'
+            };
     }
 }
 
@@ -41,7 +77,7 @@ function renderVisualResponse(rawResponse, container) {
     const fearMatch = rawResponse.match(/'fear':\s*([0-9.]+)/);
     const joyMatch = rawResponse.match(/'joy':\s*([0-9.]+)/);
     const sadnessMatch = rawResponse.match(/'sadness':\s*([0-9.]+)/);
-    const dominantMatch = rawResponse.match(/The dominant emotion is\s*<b>?([a-zA-Z]+)</b>?/i);
+    const dominantMatch = rawResponse.match(/The dominant emotion is\s*(?:<[^>]+>)?\s*([a-zA-Z]+)/i);
 
     if (angerMatch && dominantMatch) {
         const anger = parseFloat(angerMatch[1]);
